@@ -1,6 +1,6 @@
-package pthree;
+package pfour;
 //step1: find what to make thread then find its cloass and inherit Thread class
- class Employee extends Thread{
+ class Employee implements Runnable{
     String ename;
 
     public Employee(String ename) {
@@ -24,7 +24,18 @@ public class TestApp {
         Employee empone = new Employee(("pooja"));
         Employee emptwo = new Employee(("dhananjay"));
         //step3: start the threads
-        emptwo.start();
-        empone.start();
+        Thread t1 = new Thread(empone);
+        Thread t2 = new Thread(emptwo);
+//        emptwo.start();
+//        empone.start();
+        t1.start();
+        t2.start();
+
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
