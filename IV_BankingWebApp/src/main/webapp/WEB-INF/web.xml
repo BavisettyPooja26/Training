@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>IV_BankingWebApp</display-name>
+  
+  <!-- servlet initialisation at global scope -->
+  <context-param>
+	  <param-name>dbdriver</param-name>
+	   <param-value>oracle.jdbc.OracleDriver</param-value>
+  </context-param>
+  
+    <context-param>
+	  <param-name>dbconnection</param-name>
+	   <param-value>jdbc:oracle:thin:127.0.0.1:1521:xe</param-value>
+  </context-param>
+  
+    <context-param>
+	  <param-name>dbuser</param-name>
+	   <param-value>nriems</param-value>
+  </context-param>
+  
+    <context-param>
+	  <param-name>dbpass</param-name>
+	   <param-value>nriems</param-value>
+  </context-param>
+  
+  <servlet>
+  	<servlet-name>regserv</servlet-name>
+  	<servlet-class>bizlogic.RegistrationServlet</servlet-class>
+ 	<init-param>
+ 	<param-name>reginitparam</param-name>
+ 	<param-value>english</param-value>
+ 		<!-- only this servlet will be able to access it -->
+ 	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>regserv</servlet-name>
+  		<url-pattern>/regprocess</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>loginprocess</servlet-name>
+  	<servlet-class>bizlogic.LoginServlet</servlet-class>
+ <!-- servlet initialisation at servlet specific scope -->
+ <init-param>
+ 	<param-name>loginitparam</param-name>
+ 	<param-value>India</param-value>
+ 		<!-- only this servlet will be able to access it -->
+ 	</init-param>
+ 
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>loginprocess</servlet-name>
+  		<url-pattern>/loginprocess</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>pserv</servlet-name>
+  	<servlet-class>bizlogic.ProfileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>pserv</servlet-name>
+  		<url-pattern>/profileserv</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>logoutserv</servlet-name>
+  	<servlet-class>bizlogic.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>logoutserv</servlet-name>
+  		<url-pattern>/logoutserv</url-pattern>
+  </servlet-mapping>
+</web-app>

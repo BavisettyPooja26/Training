@@ -1,0 +1,5 @@
+create table tblbankuser(uid number primary key auto_increment, cname varchar(20), cage number, cgender varchar(20),caddress varchar(40),cemail varchar(20), cusername varchar(20), cuserpwd varchar(20));
+
+create table tblfeedback(feeid number primary key, feedname varchar(30), feedmsg varchar(30));
+
+create table tblservice(serviceid number primary key, servicename varchar(40), serviceamt number);
